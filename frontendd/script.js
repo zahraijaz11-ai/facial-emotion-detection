@@ -1,4 +1,3 @@
-
 // ======================================================
 // EMOTION AI - FRONTEND JAVASCRIPT
 // ======================================================
@@ -287,7 +286,7 @@ analyzeButton.addEventListener("click", async function () {
     try {
 
         const response = await fetch(
-            "http://127.0.0.1:8000/api/emotion/predict",
+            "https://facial-emotion-detection-r8tl.onrender.com/api/emotion/predict",
             {
                 method: "POST",
                 body: formData
@@ -299,6 +298,7 @@ analyzeButton.addEventListener("click", async function () {
 
 
         const data = await response.json();
+
 
         console.log("Backend response:", data);
 
