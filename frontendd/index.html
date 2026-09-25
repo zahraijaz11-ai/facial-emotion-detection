@@ -1,0 +1,230 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>AI Emotion Detection</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="background-glow glow-one"></div>
+    <div class="background-glow glow-two"></div>
+
+    <main class="app-container">
+
+        <!-- HEADER -->
+        <header class="header">
+            <div class="logo">
+                <span class="logo-icon">🧠</span>
+                <span>EmotionAI</span>
+            </div>
+        </header>
+
+
+        <!-- HERO -->
+        <section class="hero">
+
+            <p class="eyebrow">FACIAL EMOTION RECOGNITION</p>
+
+            <h1>
+                Understand emotions
+                <span>with AI.</span>
+            </h1>
+
+            <p class="subtitle">
+                Upload a facial image and let our deep learning model
+                identify the expressed emotion.
+            </p>
+
+        </section>
+
+
+        <!-- UPLOAD CARD -->
+        <section class="upload-card">
+
+            <!-- SINGLE UPLOAD / PREVIEW BOX -->
+            <div class="upload-box" id="uploadBox">
+
+                <!-- EMPTY STATE -->
+                <div id="uploadContent">
+
+                    <div class="upload-icon">📷</div>
+
+                    <h2>Upload a facial image</h2>
+
+                    <p class="upload-description">
+                        Drag & drop your image here
+                    </p>
+
+                    <p class="or-text">or</p>
+
+                    <label for="imageInput" class="upload-button">
+                        Choose Image
+                    </label>
+
+                    <input
+                        type="file"
+                        id="imageInput"
+                        accept="image/png, image/jpeg, image/webp"
+                    >
+
+                    <p id="fileName" class="file-name">
+                        No image selected
+                    </p>
+
+                    <div class="upload-options">
+                        <span>📂 Drag & Drop</span>
+                        <span>📋 Ctrl + V</span>
+                    </div>
+
+                </div>
+
+
+                <!-- IMAGE STATE -->
+                <div id="imagePreviewState">
+
+                    <div class="preview-top">
+
+                        <span class="preview-label">
+                            Selected Image
+                        </span>
+
+                        <button
+                            id="removeButton"
+                            class="remove-button"
+                            type="button"
+                        >
+                            Remove
+                        </button>
+
+                    </div>
+
+                    <div class="preview-image-wrapper">
+
+                        <img
+                            id="previewImage"
+                            src=""
+                            alt="Selected image"
+                        >
+
+                    </div>
+
+                    <p id="selectedFileName" class="selected-file-name"></p>
+
+                </div>
+
+            </div>
+
+
+            <!-- ANALYZE BUTTON -->
+            <button
+                id="analyzeButton"
+                class="analyze-button"
+                type="button"
+            >
+
+                <span id="buttonText">
+                    Analyze Emotion
+                </span>
+
+                <span
+                    id="buttonLoader"
+                    class="button-loader"
+                ></span>
+
+            </button>
+
+
+            <!-- ERROR -->
+            <div
+                id="errorMessage"
+                class="error-message"
+            ></div>
+
+
+            <!-- RESULT -->
+            <div
+                id="result"
+                class="result-card"
+            >
+
+                <div class="result-title">
+                    <span>AI Analysis</span>
+                    <span class="result-badge">RESULT</span>
+                </div>
+
+                <div class="emotion-result">
+
+                    <div
+                        id="emotionIcon"
+                        class="emotion-icon"
+                    >
+                        😊
+                    </div>
+
+                    <div>
+
+                        <p class="result-label">
+                            Detected Emotion
+                        </p>
+
+                        <h2 id="emotion">
+                            ---
+                        </h2>
+
+                    </div>
+
+                </div>
+
+
+                <!-- CONFIDENCE -->
+                <div class="confidence-section">
+
+                    <div class="confidence-header">
+
+                        <span>Confidence</span>
+
+                        <strong id="confidence">
+                            0%
+                        </strong>
+
+                    </div>
+
+                    <div class="confidence-bar">
+
+                        <div
+                            id="confidenceFill"
+                            class="confidence-fill"
+                        ></div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- FOOTER -->
+        <footer class="footer">
+
+            <p>
+                Powered by Deep Learning &nbsp;•&nbsp; EmotionAI
+            </p>
+
+        </footer>
+
+    </main>
+
+
+    <script src="script.js"></script>
+
+</body>
+</html>

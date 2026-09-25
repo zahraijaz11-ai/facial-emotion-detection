@@ -1,0 +1,564 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    font-family: Arial, Helvetica, sans-serif;
+    background: #0b1020;
+    color: #ffffff;
+    overflow-x: hidden;
+}
+
+
+/* =========================
+   BACKGROUND
+========================= */
+
+.background-glow {
+    position: fixed;
+    width: 400px;
+    height: 400px;
+    border-radius: 50%;
+    filter: blur(120px);
+    opacity: 0.25;
+    pointer-events: none;
+}
+
+.glow-one {
+    top: -150px;
+    left: -100px;
+    background: #6c63ff;
+}
+
+.glow-two {
+    right: -100px;
+    bottom: -150px;
+    background: #00c6ff;
+}
+
+
+/* =========================
+   MAIN
+========================= */
+
+.app-container {
+    width: min(1000px, 92%);
+    margin: auto;
+    position: relative;
+    z-index: 2;
+}
+
+
+/* =========================
+   HEADER
+========================= */
+
+.header {
+    padding: 30px 0;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.logo-icon {
+    font-size: 28px;
+}
+
+
+/* =========================
+   HERO
+========================= */
+
+.hero {
+    text-align: center;
+    padding: 50px 0 35px;
+}
+
+.eyebrow {
+    font-size: 12px;
+    letter-spacing: 3px;
+    color: #8f9cff;
+    font-weight: bold;
+    margin-bottom: 18px;
+}
+
+.hero h1 {
+    font-size: clamp(38px, 6vw, 64px);
+    line-height: 1.05;
+    margin-bottom: 20px;
+}
+
+.hero h1 span {
+    display: block;
+    color: #8f9cff;
+}
+
+.subtitle {
+    max-width: 600px;
+    margin: auto;
+    color: #aab1c5;
+    font-size: 17px;
+    line-height: 1.6;
+}
+
+
+/* =========================
+   UPLOAD CARD
+========================= */
+
+.upload-card {
+    background: rgba(20, 27, 50, 0.9);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 24px;
+    padding: 30px;
+    box-shadow: 0 25px 80px rgba(0, 0, 0, 0.35);
+}
+
+
+/* =========================
+   UPLOAD BOX
+========================= */
+
+.upload-box {
+    min-height: 360px;
+
+    border: 2px dashed #414b70;
+    border-radius: 18px;
+
+    padding: 40px 25px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+
+    transition: 0.25s ease;
+}
+
+.upload-box:hover,
+.upload-box.dragging {
+    border-color: #8f9cff;
+    background: rgba(143, 156, 255, 0.05);
+}
+
+
+/* =========================
+   EMPTY UPLOAD STATE
+========================= */
+
+#uploadContent {
+    width: 100%;
+}
+
+.upload-icon {
+    font-size: 50px;
+    margin-bottom: 15px;
+}
+
+.upload-box h2 {
+    margin-bottom: 10px;
+    font-size: 24px;
+}
+
+.upload-description {
+    color: #9fa8c0;
+}
+
+.or-text {
+    color: #68718c;
+    margin: 15px 0;
+}
+
+.upload-button {
+    display: inline-block;
+
+    background: #707cff;
+    color: white;
+
+    padding: 13px 25px;
+
+    border-radius: 10px;
+
+    cursor: pointer;
+    font-weight: bold;
+
+    transition: 0.2s;
+}
+
+.upload-button:hover {
+    transform: translateY(-2px);
+    opacity: 0.9;
+}
+
+#imageInput {
+    display: none;
+}
+
+.file-name {
+    margin-top: 15px;
+    color: #9fa8c0;
+    font-size: 14px;
+    word-break: break-word;
+}
+
+.upload-options {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+
+    margin-top: 20px;
+
+    color: #707a96;
+    font-size: 13px;
+}
+
+
+/* =========================
+   IMAGE PREVIEW STATE
+========================= */
+
+#imagePreviewState {
+    display: none;
+    width: 100%;
+}
+
+.preview-top {
+    width: 100%;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    margin-bottom: 15px;
+}
+
+.preview-label {
+    color: #b8c0d6;
+    font-weight: bold;
+}
+
+.remove-button {
+    background: transparent;
+
+    border: 1px solid #4a536e;
+
+    color: #b8c0d6;
+
+    padding: 7px 14px;
+
+    border-radius: 8px;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+}
+
+.remove-button:hover {
+    border-color: #ff6b6b;
+    color: #ff6b6b;
+}
+
+
+/* IMAGE ITSELF */
+
+.preview-image-wrapper {
+    width: 100%;
+    height: 260px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    overflow: hidden;
+
+    border-radius: 14px;
+
+    background: #080c17;
+}
+
+.preview-image-wrapper img {
+    max-width: 100%;
+    max-height: 250px;
+
+    object-fit: contain;
+
+    border-radius: 10px;
+}
+
+.selected-file-name {
+    margin-top: 12px;
+
+    color: #7f89a5;
+
+    font-size: 13px;
+
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+
+/* =========================
+   ANALYZE BUTTON
+========================= */
+
+.analyze-button {
+    width: 100%;
+
+    margin-top: 25px;
+
+    padding: 16px;
+
+    border: none;
+    border-radius: 12px;
+
+    background: #707cff;
+
+    color: white;
+
+    font-size: 17px;
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+}
+
+.analyze-button:hover {
+    transform: translateY(-2px);
+    background: #7d88ff;
+}
+
+.analyze-button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+}
+
+
+/* =========================
+   LOADER
+========================= */
+
+.button-loader {
+    display: none;
+
+    width: 18px;
+    height: 18px;
+
+    border: 3px solid rgba(255, 255, 255, 0.3);
+    border-top-color: white;
+
+    border-radius: 50%;
+
+    animation: spin 0.8s linear infinite;
+
+    margin-left: 8px;
+
+    vertical-align: middle;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+
+/* =========================
+   ERROR
+========================= */
+
+.error-message {
+    display: none;
+
+    margin-top: 18px;
+
+    padding: 14px;
+
+    border-radius: 10px;
+
+    background: rgba(255, 80, 80, 0.1);
+
+    border: 1px solid rgba(255, 80, 80, 0.3);
+
+    color: #ff8585;
+}
+
+
+/* =========================
+   RESULT
+========================= */
+
+.result-card {
+    display: none;
+
+    margin-top: 25px;
+
+    padding: 25px;
+
+    border-radius: 18px;
+
+    background: #11182c;
+
+    border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.result-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    color: #b9c1d6;
+
+    margin-bottom: 25px;
+}
+
+.result-badge {
+    font-size: 11px;
+
+    padding: 5px 9px;
+
+    border-radius: 20px;
+
+    background: rgba(112, 124, 255, 0.15);
+
+    color: #8f9cff;
+}
+
+.emotion-result {
+    display: flex;
+    align-items: center;
+
+    gap: 18px;
+}
+
+.emotion-icon {
+    width: 75px;
+    height: 75px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 18px;
+
+    background: rgba(112, 124, 255, 0.12);
+
+    font-size: 40px;
+}
+
+.result-label {
+    color: #7e88a4;
+
+    font-size: 13px;
+
+    margin-bottom: 5px;
+}
+
+#emotion {
+    font-size: 30px;
+    text-transform: capitalize;
+}
+
+
+/* =========================
+   CONFIDENCE
+========================= */
+
+.confidence-section {
+    margin-top: 30px;
+}
+
+.confidence-header {
+    display: flex;
+    justify-content: space-between;
+
+    margin-bottom: 10px;
+
+    color: #aeb7cd;
+}
+
+.confidence-header strong {
+    color: white;
+}
+
+.confidence-bar {
+    width: 100%;
+    height: 10px;
+
+    background: #252d44;
+
+    border-radius: 20px;
+
+    overflow: hidden;
+}
+
+.confidence-fill {
+    width: 0%;
+    height: 100%;
+
+    background: #707cff;
+
+    border-radius: 20px;
+
+    transition: width 0.8s ease;
+}
+
+
+/* =========================
+   FOOTER
+========================= */
+
+.footer {
+    text-align: center;
+
+    padding: 35px 0;
+
+    color: #59627b;
+
+    font-size: 13px;
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 600px) {
+
+    .upload-card {
+        padding: 18px;
+    }
+
+    .upload-box {
+        min-height: 320px;
+    }
+
+    .upload-options {
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .hero {
+        padding-top: 30px;
+    }
+
+    .hero h1 {
+        font-size: 40px;
+    }
+
+    .preview-image-wrapper {
+        height: 220px;
+    }
+}
