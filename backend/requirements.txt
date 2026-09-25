@@ -1,8 +1,10 @@
 fastapi
 uvicorn[standard]
 python-multipart
-opencv-python
-numpy
+opencv-python==4.11.0.86
+numpy==1.26.4
 Pillow
-tensorflow
+tensorflow==2.17.1
+mediapipe==0.10.21
 python-dotenv
+protobuf==4.25.9
